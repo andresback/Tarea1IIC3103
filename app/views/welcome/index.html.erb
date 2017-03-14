@@ -1,0 +1,20 @@
+<h2>Noticias</h2>
+
+<%= link_to 'Administrator', news_index_path %>
+
+<% @news.each do |n| %>
+    <p>
+
+      Title: <%= n.title %>
+    </p><p>
+
+  Subtitle: <%= n.subtitle %>
+</p><p>
+  Body: <%= n.body.truncate(1000, separator: /\s/) %>
+
+</p><p>
+  Date: <%= n.date %>
+  Comments: <%= @counts[n.id] %>
+</p><p>
+  <%= link_to 'View', n %>
+</p>
