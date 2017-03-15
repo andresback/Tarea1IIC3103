@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -19,6 +18,31 @@
   <strong>Date:</strong>
   <%= @news.date %>
 </p>
+<p>
+  <% @news.comments.each do |comment| %>
+      <p>
+  Name: <%= comment.name %>  Comment: <%= comment.comment %>
+      </p>
+
+  <% end %>
+
+</p>
+<p>
+  <%= form_for ([@news, @news.comments.build]) do |f| %>
+      <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :comment %>
+        <%= f.text_area :comment %>
+        <div class="actions">
+          <%= f.submit %>
+          <% end %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_news_path(@news) %> |
 <%= link_to 'Back', root_path %>

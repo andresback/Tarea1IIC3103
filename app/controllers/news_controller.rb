@@ -10,11 +10,15 @@ class NewsController < ApplicationController
   # GET /news/1
   # GET /news/1.json
   def show
+    @news = News.find(params[:id])
+    @comments = Comment.where('news_id = ?', @news.id)
+    @new_comment = @news.comments.build
   end
 
   # GET /news/new
   def new
     @news = News.new
+    @comments = Comment.new(news_id: params[:news_id])
   end
 
   # GET /news/1/edit
